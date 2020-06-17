@@ -82,4 +82,19 @@ public class EmployeeService {
 		int sumSalary=employeeRepository.maxSalary();
 		return sumSalary;
 	}
+	
+	public List<Employee> findByFirstNameAsc(){
+		List<Employee> emplist =employeeRepository.sortByFirstNameAsc();
+		return emplist;
+	}
+	
+	public List<Employee> sortByFirstNamedesc(){
+		List<Employee> emplist =employeeRepository.sortByFirstNamedesc();
+		return emplist;
+	}
+	
+	
+	
+	
+	
 }

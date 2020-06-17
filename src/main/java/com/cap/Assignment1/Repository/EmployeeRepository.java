@@ -23,5 +23,12 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	@Query(value="select max(e.salary) from Employee e",nativeQuery = true)
 	public Integer maxSalary();
 	
+	@Query(value="select * from Employee order by firstname",nativeQuery = true)
+	public List<Employee> sortByFirstNameAsc();
+	
+	@Query(value="select * from Employee order by firstname desc",nativeQuery = true)
+	public List<Employee> sortByFirstNamedesc();
+	
+	
 	
 }

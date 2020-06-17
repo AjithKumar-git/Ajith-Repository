@@ -17,16 +17,10 @@ public class Department {
 	private String departmentName;
 	@Column(name="Location")
 	private String Location;
-	@ManyToOne(cascade = CascadeType.REFRESH)
+	
+	@OneToOne(cascade = CascadeType.REFRESH)
 	private Employee employee;
 	
-	
-	public Employee getEmployee() {
-		return employee;
-	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
 	public Department() {
 		super();
 		// TODO Auto-generated constructor stub

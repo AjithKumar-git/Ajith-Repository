@@ -1,0 +1,42 @@
+---
+server:
+  port: 8083
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+    
+
+      
+spring:
+  security:
+    user:
+      name: root
+      password: root  
+info:
+ app:
+  name: My Spring Boot Application
+  desc: App with profiling and Actiator
+  version : 1.0   
+---
+spring:
+  profiles:
+  - dev
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/Capgemini_Assignments1
+    username: postgres  
+    password: root
+    
+  jpa:
+    generate-ddl: false
+    show-sql: true
+
+        
+        
+        
+    

@@ -23,7 +23,7 @@ import com.cap.Assignment1.Repository.EmployeeRepository;
 import com.cap.Assignment1.Services.EmployeeService;
 import com.cap.Assignment1.models.Address;
 import com.cap.Assignment1.models.Employee;
-import com.sun.el.stream.Optional;
+
 
 @RestController
 public class EmployeeController {
@@ -55,6 +55,31 @@ public class EmployeeController {
 		}
 		
 		return new ResponseEntity<List<Employee>>(emplist,HttpStatus.OK);
+	}
+	
+	@GetMapping("/viewEmployeesByFirstName")
+	public ResponseEntity<List<Employee>> viewEmployeesByFirstName(){
+		List<Employee> emplist=employeeService.findByFirstNameAsc();
+		if(emplist==null||emplist.isEmpty()) {
+			return new ResponseEntity("Sorry!No employees found",HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<List<Employee>>(emplist,HttpStatus.OK);
+		
+		
+	}
+	
+	
+	@GetMapping("/viewEmployeesByFirstNameDesc")
+	public ResponseEntity<List<Employee>> viewEmployeesByFirstNameDesc(){
+		List<Employee> emplist=employeeService.sortByFirstNamedesc();
+		if(emplist==null||emplist.isEmpty()) {
+			return new ResponseEntity("Sorry!No employees found",HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<List<Employee>>(emplist,HttpStatus.OK);
+		
+		
 	}
 	
 	@GetMapping("/viewEmployee/{id}")

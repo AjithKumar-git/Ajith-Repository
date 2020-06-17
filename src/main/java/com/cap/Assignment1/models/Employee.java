@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 
 @Entity
@@ -32,13 +34,21 @@ public class Employee {
 	
 	@OneToMany(targetEntity = Address.class, cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
 	@JoinColumn(name="employee_employeeid")
+	@JsonIgnoreProperties
 	private List<Address> address=new ArrayList<>();
+    
+	@OneToOne(cascade = CascadeType.PERSIST)
+	private Department department;
+	
+	
+	public Department getDepartment() {
+		return department;
+	}
 
-	@OneToMany(targetEntity = Department.class,cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
-	@JoinColumn(name="employee_employeeid")
-	private List<Department> department;
-	
-	
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
 	public Integer getEmployeeId() {
 		return employeeId;
 	}
